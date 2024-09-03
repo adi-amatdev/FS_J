@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <script>
+        // The html page  uses the concept of debouncing to delay the number of 
+        // backend calls.
+        async function populateDiv(){
+            const p = document.getElementById("input1").value;
+            const t = document.getElementById("input2").value;
+            const r = document.getElementById("input3").value;
+            const res = await fetch("http://localhost:5000/SI?p="+p+"&t="+t+"&r="+r);
+            const ans = await res.text();
+            console.log(JSON.parse(ans));
+            document.getElementById("Interest").innerHTML= ans;
+
+        }
+        let timeout = null;
+        async function debounceDiv(params) {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => {
+                populateDiv()
+            }, 500);
+        }
+    </script>
+    <input oninput="debounceDiv()" id="input1" , type="text", placeholder="p"> <br> <br>
+    <input oninput="debounceDiv()" id="input2", type="text", placeholder="t"> <br><br>
+    <input oninput="debounceDiv()" id="input3", type="text", placeholder="r"> <br><br>
+    <!-- <button onclick="populateDiv()">Calculate result</button> -->
+    <div id="Interest"></div>
+    <div id="amount"></div>
+</body>
+</html>
+
+<!-- ID tag is generally used for making websites DYNAMIC with javascript -->
+ <!-- parseInt converts string into number  -->
