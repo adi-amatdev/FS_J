@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function addTodo(){
+            const title = document.getElementById("title").value;
+            const desc = document.getElementById("desc").value;
+            const originalHtml = document.getElementById("container");
+            //need to create elements | Creating doesnt add it to the dom tree
+            const outerdiv = document.createElement("div");
+            const titlediv = document.createElement("div");
+            const descdiv = document.createElement("div");
+            const button = document.createElement("button");
+            titlediv.innerHTML = title;
+            descdiv.innerHTML = desc;
+            button.innerHTML = "Mark as done";
+            outerdiv.appendChild(titlediv).appendChild(descdiv).appendChild(button); 
+            originalHtml.appendChild(outerdiv);
+
+
+        }
+    </script>
+    <div>
+        <input type="text" placeholder="title" name="title" id="title">
+        <input type="text" name="desc" id="desc" placeholder="description">
+        <button onclick="addTodo()">submit </button>
+        <div id="container"></div>
+
+    </div>
+</body>
+</html>
+
+<!-- React takes current state param and updates frontend based on logic.
+    The goal of React is to calculate the difference between the oldState and newState
+    
+-->
