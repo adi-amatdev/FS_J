@@ -1,35 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    
-</head>
-<body>
-    <script>
-        async function populateDiv(){
-            const a = document.getElementById("input1").value;
-            const b = document.getElementById("input2").value;
-            const res = await fetch("http://localhost:5000/sum?a="+a+"&b="+b);
-            const ans = await res.text()
-            document.getElementById("finalSum").innerHTML= ans;
-
-        }
-        let timeout = null;
-        async function debounceDiv(params) {
-            clearTimeout(timeout);
-            timeout = setTimeout(() => {
-                populateDiv()
-            }, 500);
-        }
-    </script>
-    <input oninput="debounceDiv()" id="input1" , type="text", placeholder="input1"> <br> <br>
-    <input oninput="debounceDiv()" id="input2", type="text", placeholder="input2"> <br><br>
-    <!-- <button onclick="populateDiv()">Calculate result</button> -->
-    <div id="finalSum"></div>
-</body>
+<html>
+    <body></body>
 </html>
-
-<!-- ID tag is generally used for making websites DYNAMIC with javascript -->
- <!-- parseInt converts string into number  -->
